@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estación Meteorológica</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>ESTACIÓN METEOROLÓGICA</h1>
+        
+        <div class="status" id="status">
+            Sistema Detenido
+        </div>
+
+        <div class="datos-actuales">
+            <div class="dato-card">
+                <div class="dato-label">Temperatura</div>
+                <div class="dato-valor" id="temp-valor">--</div>
+                <div style="opacity: 0.7; margin-top: 5px;">°C</div>
+            </div>
+            
+            <div class="dato-card">
+                <div class="dato-label">Humedad</div>
+                <div class="dato-valor" id="hum-valor">--</div>
+                <div style="opacity: 0.7; margin-top: 5px;">%</div>
+            </div>
+            
+            <div class="dato-card">
+                <div class="dato-label">Presión</div>
+                <div class="dato-valor" id="pres-valor">--</div>
+                <div style="opacity: 0.7; margin-top: 5px;">hPa</div>
+            </div>
+        </div>
+
+        <div class="descripcion">
+            <div class="descripcion-texto" id="descripcion">
+                Esperando datos...
+            </div>
+        </div>
+
+        <div class="graficas-container">
+            <h2 style="text-align: center; margin-bottom: 20px;">Gráficas en Tiempo Real</h2>
+            <div class="graficas-grid">
+                <div class="grafica-wrapper">
+                    <canvas id="chartTemp"></canvas>
+                </div>
+                <div class="grafica-wrapper">
+                    <canvas id="chartHum"></canvas>
+                </div>
+                <div class="grafica-wrapper">
+                    <canvas id="chartPres"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="controles">
+            <button class="btn-iniciar" onclick="estacion.iniciar()" id="btnIniciar">
+                Iniciar Estación
+            </button>
+            <button class="btn-detener" onclick="estacion.detener()" id="btnDetener" disabled>
+                Detener Estación
+            </button>
+            <button class="btn-descargar" onclick="estacion.descargarDatos()" id="btnDescargar">
+                Descargar CSV
+            </button>
+        </div>
+
+        <div class="log-container" id="logContainer">
+            <div class="log-entry info">Sistema listo. Presiona "Iniciar Estación" para comenzar.</div>
+        </div>
+    </div>
+
+    <script src="sensor.js"></script>
+    <script src="registro.js"></script>
+    <script src="visualizacion.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
